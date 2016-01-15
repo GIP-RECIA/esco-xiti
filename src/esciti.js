@@ -4,8 +4,8 @@
 
 // Charge le script escitiData.js contenant les données et le code pour les traitements xiti.
 // Ce script contient aussi le code de gestion des cookies qui ne devrait pas changer.
-// escitiDate.js est appelé avec un numero de version qui change tout les jours pour permettre 
-// la  mise a jour malgrés les caches navigateur. 
+// escitiData.js est appelé avec un numéro de version qui change tout les jours pour permettre 
+// la  mise a jour malgré les caches navigateur. 
 
 //=============================================================================
 // CookieENT4esciti Definition
@@ -13,13 +13,13 @@
 // copie de CookieLib.js
 //=============================================================================
 
-// object de gestion des cookies.	 
+// Object de gestion des cookies.	 
 function CookieENT4esciti(){};
 
-// si deux appele à ce meme script pas de reexecution du script des données.
+// Si deux appels à ce même script pas de ré-exécution du script des données.
 if (typeof InfoENT4esciti == 'undefined' ) {
 
-	// calcule de la date numero de version
+	// calcule de la date numéro de version
 	var date = new Date();
 	var ds = 10000 * date.getFullYear() + 100 * date.getMonth()+date.getDate();
 
@@ -28,13 +28,13 @@ if (typeof InfoENT4esciti == 'undefined' ) {
 	var isTest = domain.indexOf('test') >= 0;
 	var fichierData = isTest ? 'escitiDataTest.js' : 'escitiData.js';
 
-	// on recupere le chemin (url) de ce script: c'est le dernier script de la liste (il est en cour de chargement)
+	// on récupère le chemin (url) de ce script: c'est le dernier script de la liste (il est en cour de chargement)
 	var scripts= document.getElementsByTagName('script');
-	// on deduit l'url d'appele : mettre en parametre le nom du script lui-meme.
+	// on déduit l'url d'appel : mettre en paramètre le nom du script lui-même.
 	var path= scripts[scripts.length-1].src.split('esciti.js')[0]; 
 
 	
-	// le nom du fichier contenant les data et le code versionné (doit etre au meme endroit)
+	// le nom du fichier contenant les data et le code versionné (doit être au même endroit)
 	var urlData = path + fichierData + '?v='+ ds ;
 	
 	InfoENT4esciti = new Object();
@@ -42,7 +42,7 @@ if (typeof InfoENT4esciti == 'undefined' ) {
 	InfoENT4esciti.urlPath=path; 
 
 	// charge le script contenant les données. 
-	// attention ce script ne sera evalué qu'apres la fin de celui dans lequel on est.
+	// attention ce script ne sera évalué qu'aprèsla fin de celui dans lequel on est.
 	document.write('<script type="text/javascript" src="'+urlData+'"></script>');
 }
 /**
