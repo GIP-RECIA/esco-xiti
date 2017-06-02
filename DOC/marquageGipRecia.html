@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="hevea 2.29">
+<style type="text/css">
+.li-itemize{margin:1ex 0ex;}
+.li-enumerate{margin:1ex 0ex;}
+.dd-description{margin:0ex 0ex 1ex 4ex;}
+.dt-description{margin:0ex;}
+.toc{list-style:none;}
+.footnotetext{margin:0ex; padding:0ex;}
+div.footnotetext P{margin:0px; text-indent:1em;}
+.thefootnotes{text-align:left;margin:0ex;}
+.dt-thefootnotes{margin:0em;}
+.dd-thefootnotes{margin:0em 0em 0em 2em;}
+.footnoterule{margin:1em auto 1em 0px;width:50%;}
+.caption{padding-left:2ex; padding-right:2ex; margin-left:auto; margin-right:auto}
+.title{margin:2ex auto;text-align:center}
+.titlemain{margin:1ex 2ex 2ex 1ex;}
+.titlerest{margin:0ex 2ex;}
+.center{text-align:center;margin-left:auto;margin-right:auto;}
+.flushleft{text-align:left;margin-left:0ex;margin-right:auto;}
+.flushright{text-align:right;margin-left:auto;margin-right:0ex;}
+div table{margin-left:inherit;margin-right:inherit;margin-bottom:2px;margin-top:2px}
+td table{margin:auto;}
+table{border-collapse:collapse;}
+td{padding:0;}
+.cellpadding0 tr td{padding:0;}
+.cellpadding1 tr td{padding:1px;}
+pre{text-align:left;margin-left:0ex;margin-right:auto;}
+blockquote{margin-left:4ex;margin-right:4ex;text-align:left;}
+td p{margin:0px;}
+.boxed{border:1px solid black}
+.textboxed{border:1px solid black}
+.vbar{border:none;width:2px;background-color:black;}
+.hbar{border:none;height:2px;width:100%;background-color:black;}
+.hfill{border:none;height:1px;width:200%;background-color:black;}
+.vdisplay{border-collapse:separate;border-spacing:2px;width:auto; empty-cells:show; border:2px solid red;}
+.vdcell{white-space:nowrap;padding:0px; border:2px solid green;}
+.display{border-collapse:separate;border-spacing:2px;width:auto; border:none;}
+.dcell{white-space:nowrap;padding:0px; border:none;}
+.dcenter{margin:0ex auto;}
+.vdcenter{border:solid #FF8000 2px; margin:0ex auto;}
+.minipage{text-align:left; margin-left:0em; margin-right:auto;}
+.marginpar{border:solid thin black; width:20%; text-align:left;}
+.marginparleft{float:left; margin-left:0ex; margin-right:1ex;}
+.marginparright{float:right; margin-left:1ex; margin-right:0ex;}
+.theorem{text-align:left;margin:1ex auto 1ex 0ex;}
+.part{margin:2ex auto;text-align:center}
+.lstlisting{font-family:monospace;white-space:pre;margin-right:auto;margin-left:0pt;text-align:left}
+</style>
+<title>L'Environnement Numérique de Travail NetoCentre. 
+		Le marquage XiTi.
+</title>
+</head>
+<body >
+<!--HEVEA command line is: hevea macros.hva marquageGipRecia.tex -->
+<!--CUT STYLE article--><!--CUT DEF section 1 --><p>
+	</p><table class="title"><tr><td style="padding:1ex"><h1 class="titlemain">L’Environnement Numérique de Travail <span style="font-style:italic">NetoCentre</span>.<br>
+		Le marquage XiTi.</h1><h3 class="titlerest">P. Legay</h3></td></tr>
+</table><p>
+	 </p><!--TOC section id="sec1" Table des matières-->
+<h2 id="sec1" class="section">Table des matières</h2><!--SEC END --><ul class="toc"><li class="li-toc">
+<a href="#sec2">1  Contexte.</a>
+</li><li class="li-toc"><a href="#sec3">2  Le plan de marquage.</a>
+</li><li class="li-toc"><a href="#sec4">3  Les outils de marquage de l’ENT <span style="font-style:italic">NetoCentre</span>.</a>
+<ul class="toc"><li class="li-toc">
+<a href="#sec5">3.1  esciti.js</a>
+</li><li class="li-toc"><a href="#sec6">3.2  escitiData.js</a>
+<ul class="toc"><li class="li-toc">
+<a href="#sec7">3.2.1  Le paramétrage.</a>
+</li><li class="li-toc"><a href="#sec8">3.2.2  Les fonctions qui préparent le marquage.</a>
+</li><li class="li-toc"><a href="#sec9">3.2.3  Les fonctions qui posent les marqueurs.</a>
+</li></ul>
+</li></ul>
+</li><li class="li-toc"><a href="#sec10">4  Le marquage du portail de l’ENT <span style="font-style:italic">NetoCentre</span>.</a>
+<ul class="toc"><li class="li-toc">
+<a href="#sec11">4.1  Modification de <span style="font-family:monospace">renderingPipelineContext.xml</span>.</a>
+</li><li class="li-toc"><a href="#sec12">4.2  Modification de <span style="font-family:monospace">universality.xsl</span>.</a>
+</li><li class="li-toc"><a href="#sec13">4.3  Modification de <span style="font-family:monospace">page.xsl</span>.</a>
+</li></ul>
+</li><li class="li-toc"><a href="#sec14">5  Le marquage de la version mobile du portail <span style="font-style:italic">NetoCentre</span>.</a>
+<ul class="toc"><li class="li-toc">
+<a href="#sec15">5.1  Modification de <span style="font-family:monospace">muniversality.xsl</span>.</a>
+</li></ul>
+</li><li class="li-toc"><a href="#sec16">6  Le marquage du la nouvelle version du portail RWD (up;4.3)</a>
+</li><li class="li-toc"><a href="#sec17">7  Le marquage de moodle.</a>
+<ul class="toc"><li class="li-toc">
+<a href="#sec18">7.1  Modification des fichiers de type <span style="font-family:monospace">columns?.php</span></a>
+</li></ul>
+</li><li class="li-toc"><a href="#sec19">8  Le marquage du cahier de texte.</a>
+<ul class="toc"><li class="li-toc">
+<a href="#sec20">8.1  Les modifications du code java.</a>
+</li><li class="li-toc"><a href="#sec21">8.2  Les Modifications des pages.xhtml.</a>
+</li></ul>
+</li><li class="li-toc"><a href="#sec22">9  Quelques outils.</a>
+<ul class="toc"><li class="li-toc">
+<a href="#sec23">9.1  js_compress.sh</a>
+</li><li class="li-toc"><a href="#sec24">9.2  code_etab2js.pl</a>
+</li><li class="li-toc"><a href="#sec25">9.3  marqueMoodlPage.pl</a>
+</li></ul>
+</li></ul>
+<!--TOC section id="sec2" Contexte.-->
+<h2 id="sec2" class="section">1  Contexte.</h2><!--SEC END --><p>		Pour évaluer les usages et pouvoir les comparer, les administrations de tutelle souhaite l’utilisation d’indicateur commun aux différents <span style="font-size:small">ENT</span> de l’enseignement secondaire.
+		La <span style="font-size:small">CDC-numerique</span> (Caisse des dépôts) coordonne au niveau national la mise en place de ces indicateurs. 
+		Elle a choisi, pour ce faire, d’utiliser la technologie des marqueurs <span style="font-size:small">XiTi</span> de A<span style="font-size:small">T I</span>nternet et a confié la mise en œuvre du dispositif à la société Kleegroup.
+		
+		La <span style="font-size:small">CDC </span>a produit le document "Guide de marquage des environnements numériques de travail de l’enseignement secondaire", il fixe les nomenclatures communes à respecter 
+		et détail les méthodes de marquage à employer. Sa "Version 2.0 validée - Avril 2012" (<a href="20120412_Guide de marquage_v2.0.pdf">CDC-doc</a>) donne donc le cadre de référence à la mise en place des marqueurs <span style="font-size:small">XiTi</span>.
+		 
+		Le principe de base est d’insérer dans chaque page de l’<span style="font-size:small">ENT</span> un marqueur fournit par Kleegroup qui transmettra au site de Kleegroup les informations sur l’utilisateur connecté, son profil, son établissement 
+		et le type de service que la page fournit. 
+		Pour les services extérieurs, ceux dont on ne maîtrise pas le codage des pages, le marquage consiste à détecter l’appelle à ces services.
+		
+		Dans le contexte <span style="font-style:italic">NetoCentre</span> toutes les pages sont dynamiques, les services proposés sont fonction de l’utilisateur et de l’établissement.
+		Pour ne pas être trop intrusif, dans le code des différentes applications de l’<span style="font-size:small">ENT</span>, les marqueurs <span style="font-size:small">XiTi</span> seront posés en utilisant des fonctions JavaScript.</p>
+<!--TOC section id="sec3" Le plan de marquage.-->
+<h2 id="sec3" class="section">2  Le plan de marquage.</h2><!--SEC END --><p>
+		Le plan de marquage définit quelles pages doivent être marquées et à quels services elles correspondent.
+		La nomenclature des services est définie dans <a href="20120412_Guide de marquage_v2.0.pdf">CDC-doc</a>. 
+		
+		L’objectif de la <span style="font-size:small">CDC-numérique</span> est d’avoir des indicateurs d’usage comparables entre les <span style="font-size:small">ENT</span> du secondaire.
+		Le plan de marquage doit donc être validé par la <span style="font-size:small">CDC-numerique</span>. 
+		Il sert de référence pour la calification du marquage, effectuée aussi par la <span style="font-size:small">CDC-numérique</span>.
+		
+		
+		
+</p>
+<!--TOC section id="sec4" Les outils de marquage de l’ENT <span style="font-style:italic">NetoCentre</span>.-->
+<h2 id="sec4" class="section">3  Les outils de marquage de l’ENT <span style="font-style:italic">NetoCentre</span>.</h2><!--SEC END --><p>
+		Le marquage de l’<span style="font-size:small">ENT</span> se fait par un code JavaScript réparti dans deux fichiers: <a href="../src/esciti.js">esciti.js</a> et <a href="../src/escitiData.js">escitiData.js</a> et un cookie.
+		Ces fichiers seront placés sur le frontal pour être accessibles depuis les mêmes domaines que les portails. 
+		On y ajoutera, à la même place, le fichier <span style="font-family:monospace">xtfirst_ENT.js</span> fourni par la <span style="font-size:small">CDC.</span>
+	
+		Le script <a href="../src/esciti.js">esciti.js</a> contient du code statique (sans évolution) tandis que <a href="../src/escitiData.js">escitiData.js</a> contient les données de paramétrage 
+		et le code pouvant évoluer dans le temps.
+		Le cookie est utilisé pour mémoriser les dernières informations de marquage dans le cas 
+		où la page suivante est incapable de les déduire, elles sont alors réutilisables.
+		
+		</p>
+<!--TOC subsection id="sec5" esciti.js-->
+<h3 id="sec5" class="subsection">3.1  esciti.js</h3><!--SEC END --><p>
+			Script statique contenant le code de gestion du cookie.
+			Il fait le chargement de <a href="../src/escitiData.js">escitiData.js</a> versionné à la date du jour. 
+			Ceci force à une relecture tous les jours.
+			 
+		</p>
+<!--TOC subsection id="sec6" escitiData.js-->
+<h3 id="sec6" class="subsection">3.2  escitiData.js</h3><!--SEC END --><p>
+			Créé un objet JavaScript, <span style="font-style:italic">InfoENT</span>4<span style="font-style:italic">esciti</span>, qui
+			contient les données d’initialisation liées à <span style="font-size:small">XiTi</span> et dix tables de correspondance ou de nomenclature;
+			 il faut les initialiser avec les données du domaine.
+			À <span style="font-style:italic">InfoENT</span>4<span style="font-style:italic">esciti</span> est aussi associé les fonctions JavaScript utilisables dans les pages à marquer.
+			
+		</p>
+<!--TOC subsubsection id="sec7" Le paramétrage.-->
+<h4 id="sec7" class="subsubsection">3.2.1  Le paramétrage.</h4><!--SEC END --><p>
+			</p><dl class="description"><dt class="dt-description">
+				
+				<span style="font-style:italic">InfoENT</span>4<span style="font-style:italic">esciti</span>.<span style="font-style:italic">projet</span></dt><dd class="dd-description"> : numéro du projet <span style="font-size:small">XiTi</span>.
+				
+				</dd><dt class="dt-description"><span style="font-style:italic">InfoENT</span>4<span style="font-style:italic">esciti</span>.<span style="font-style:italic">plateforme</span></dt><dd class="dd-description">:				 
+				numéro de la plate-forme <span style="font-size:small">XiTi</span>; mettre la valeur par défaut, elle sera modifiée à l’exécution. 
+				
+				</dd><dt class="dt-description"><span style="font-style:italic">InfoENT</span>4<span style="font-style:italic">esciti</span>.<span style="font-style:italic">collectivites</span></dt><dd class="dd-description"> : 
+				tableau contenant les collectivités du projet. 
+					
+					L’indice dans le tableau donne la référence de la collectivité utilisée dans le reste du programme.
+					Chaque enregistrement contient le numéro <span style="font-size:small">XiTi</span> de la collectivité (<span style="font-size:small"><span style="font-style:italic">ID_COLLECTIVITE</span></span>) et le numéro de plate-forme <span style="font-size:small">XiTi</span> (<span style="font-size:small"><span style="font-style:italic">ID_PLATEFORME</span></span>) correspondant.
+					
+					Chaque ligne du tableau sera donc de la forme: <table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell">[<span style="font-size:small"><span style="font-style:italic">ID_COLLECTIVITE</span></span>, <span style="font-size:small"><span style="font-style:italic">ID_PLATEFORME</span></span>].</td></tr>
+</table>
+					
+					Nous avons, pour l’instant, deux collectivités : "Collectivité de Test" et "Région Centre Val de Loire".
+					On peut en ajouter mais pas changer l’ordre.
+	
+				</dd><dt class="dt-description"><span style="font-style:italic">InfoENT</span>4<span style="font-style:italic">esciti</span>.<span style="font-style:italic">siren</span>2<span style="font-style:italic">etab</span></dt><dd class="dd-description"> : 	table associative entre le <span style="font-size:small"><span style="font-style:italic">SIREN</span></span> d’une structure et le couple, numéro d’établissement <span style="font-size:small">XiTi</span> (<span style="font-size:small"><span style="font-style:italic">ID_ETAB</span></span>), collectivité (<span style="font-style:italic">idx</span>).
+						Tous les établissements à marquer doivent être dans cette table.
+						
+						Une entrée sera de la forme : <table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell">"<span style="font-size:small"><span style="font-style:italic">SIREN</span></span>" : [<span style="font-size:small"><span style="font-style:italic">ID_ETAB</span></span>, <span style="font-style:italic">idx</span>],</td></tr>
+</table> où <span style="font-style:italic">idx</span> est l’indice dans la table <span style="font-style:italic">InfoENT</span>4<span style="font-style:italic">esciti</span>.<span style="font-style:italic">collectivites</span>.
+						
+						On utilisera par défaut le <span style="font-size:small"><span style="font-style:italic">SIREN</span></span> de la structure de rattachement des utilisateurs pour déduire le numéro d’établissement <span style="font-size:small">XiTi</span>.
+						Ceci est mal adapté aux utilisateurs membres de plusieurs établissements, d’où la table suivante.
+					
+				</dd><dt class="dt-description"><span style="font-style:italic">InfoENT</span>4<span style="font-style:italic">esciti</span>.<span style="font-style:italic">uai</span>2<span style="font-style:italic">siren</span></dt><dd class="dd-description"> : 
+						table associative entre l’<span style="font-size:small"><span style="font-style:italic">UAI</span></span> d’un établissement et son <span style="font-size:small"><span style="font-style:italic">SIREN</span></span>.
+						Tous les établissements à marquer ayant un <span style="font-size:small"><span style="font-style:italic">UAI</span></span>  doivent être dans cette table.
+						
+						Une entrée sera de la forme : <table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell">"<span style="font-size:small"><span style="font-style:italic">UAI</span></span>" : "<span style="font-size:small"><span style="font-style:italic">SIREN</span></span>".</td></tr>
+</table> 
+						On utilisera l’<span style="font-size:small"><span style="font-style:italic">UAI</span></span> de l’établissement courant de l’utilisateur pour déduire le numéro d’établissement <span style="font-size:small">XiTi</span>.
+						S’il n’existe pas, ou n’est pas disponible, on prendra le <span style="font-size:small"><span style="font-style:italic">SIREN</span></span> de sa structure de rattachement.
+				
+				</dd><dt class="dt-description"><span style="font-style:italic">InfoENT</span>4<span style="font-style:italic">esciti</span>.<span style="font-style:italic">objClass</span>2<span style="font-style:italic">profile</span></dt><dd class="dd-description"> : 
+					table associative entre les <span style="font-size:small"><span style="font-style:italic">ObjectClass</span></span> <span style="font-size:small">LDAP</span>  des utilisateurs et les profils <span style="font-size:small">XiTi</span> (<span style="font-size:small"><span style="font-style:italic">ID_PROFILE</span></span>).
+					Les profils <span style="font-size:small">XiTi</span> sont définis dans <a href="20120412_Guide de marquage_v2.0.pdf">CDC-doc</a>.
+					
+					Une entré sera de la forme : <table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell">"<span style="font-size:small"><span style="font-style:italic">ObjectClass</span></span>" : "<span style="font-size:small"><span style="font-style:italic">ID_PROFILE</span></span>".</td></tr>
+</table>
+					
+					On déduit les profils utilisateur à l’aide de leurs <span style="font-size:small"><span style="font-style:italic">ObjectClass</span></span> <span style="font-size:small">LDAP</span>. 
+					Il ne faut mettre dans cette table que les <span style="font-size:small"><span style="font-style:italic">ObjectClass</span></span> définissant de façon unique un profil.
+					Les <span style="font-size:small"><span style="font-style:italic">ObjectClass</span></span> d’un utilisateur n’appartenant pas à cette table seront ignorés.
+					Si un utilisateur a plusieurs <span style="font-size:small"><span style="font-style:italic">ObjectClass</span></span> appartenant à cette table, 
+					le profil sera déterminé indépendamment de l’ordre dans la table (fonction de l’implémentation JavaScript) , 
+					ça ne devrait pas arriver.
+					Si un utilisateur n’a aucun <span style="font-size:small"><span style="font-style:italic">ObjectClass</span></span> correspondant, son profil sera ’<span style="font-size:small"><span style="font-style:italic">Autres</span></span>’, 
+					renseigné comme un pseudo-<span style="font-size:small"><span style="font-style:italic">ObjectClass</span></span> dans la table.
+				
+				</dd><dt class="dt-description"><span style="font-style:italic">InfoENT</span>4<span style="font-style:italic">esciti</span>.<span style="font-style:italic">service</span>2<span style="font-style:italic">id</span></dt><dd class="dd-description"> : 
+					table associative entre les noms des services <span style="font-size:small">XiTi</span> (<span style="font-size:small"><span style="font-style:italic">LIB_SERVICE</span></span>) et leurs identifiants <span style="font-size:small">XiTi</span> (<span style="font-size:small"><span style="font-style:italic">ID_SERVICE</span></span>).
+					Cette table est donnée dans <a href="20120412_Guide de marquage_v2.0.pdf">CDC-doc</a>.
+					 
+					Une entrée sera de la forme : <table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell">"<span style="font-size:small"><span style="font-style:italic">LIB_SERVICE</span></span>" : <span style="font-size:small"><span style="font-style:italic">ID_SERVICE</span></span>.</td></tr>
+</table>
+					Dans les pages à marquer, on utilisera donc que les <span style="font-size:small"><span style="font-style:italic">LIB_SERVICE</span></span>, les identifiants seront déduits.
+					
+				</dd><dt class="dt-description"><span style="font-style:italic">InfoENT</span>4<span style="font-style:italic">esciti</span>.<span style="font-style:italic">context</span>2<span style="font-style:italic">Service</span></dt><dd class="dd-description"> : 
+					table associative entre les noms de contexte des portlets du portail et les services <span style="font-size:small">XiTi</span>.
+					Les portlets ne sont pas des pages complètes, elles sont incluses dans les pages du portail.
+					Leur marquage se fera à partir de la page hôte en utilisant le service associé à leur nom dans cette table.
+					
+					Une entrée sera de la forme : <table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell">"<span style="font-style:italic">fname</span>" : "<span style="font-size:small"><span style="font-style:italic">LIB_SERVICE</span></span>".</td></tr>
+</table>
+					
+					Les noms indiqués ici peuvent être des sous-chaînes des noms de portlet (fname).
+					Ainsi : <table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell">"<span style="font-style:italic">annonces</span>" : "<span style="font-style:italic">Actualites</span>",</td></tr>
+</table>	
+					marquera la portlet "<span style="font-style:italic">annoncesCFA</span>" et aussi "<span style="font-style:italic">annoncesCLG</span>37" avec le service "<span style="font-style:italic">Actualites</span>".
+					Les portlets dont le nom n’est pas trouvé ne sont pas marquées.
+					
+				</dd><dt class="dt-description"><span style="font-style:italic">InfoENT</span>4<span style="font-style:italic">esciti</span>.<span style="font-style:italic">href</span>2<span style="font-style:italic">Service</span></dt><dd class="dd-description"> : 		 
+					table associative entre les ancres (liens) et les services <span style="font-size:small">XiTi</span>.
+					C’est le même principe que pour les portlets appliqué au marquage sur le clic d’un lien.
+					Tous liens (href) du portail qui contient une clé de cette table sera marqué (onclick) avec le service associé.
+					
+					Une entrée sera de la forme : <table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell">"<span style="font-style:italic">motClef</span>" : "<span style="font-size:small"><span style="font-style:italic">LIB_SERVICE</span></span>".</td></tr>
+</table>
+					Par exemple : <table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell">"<span style="font-style:italic">sympa</span>" : "<span style="font-style:italic">Page</span>_<span style="font-style:italic">ENT</span>"</td></tr>
+</table>
+					associera un événement onclick de marquage, à tous liens (‹a›) dont le href contient le mot ‘sympa’. 
+				
+				</dd><dt class="dt-description"><span style="font-style:italic">InfoENT</span>4<span style="font-style:italic">esciti</span>.<span style="font-style:italic">txt</span>2<span style="font-style:italic">Service</span></dt><dd class="dd-description"> : 
+					table associative ayant le même rôle que <span style="font-style:italic">context</span>2<span style="font-style:italic">Service</span> pour ce qui n’est pas portlet.
+					On l’utilisera, par exemple, pour moodle où les ‘id’ des tags ‹body› définissent bien les services. 
+					
+				</dd><dt class="dt-description"><span style="font-style:italic">InfoENT</span>4<span style="font-style:italic">esciti</span>.<span style="font-style:italic">uidAfiltre</span></dt><dd class="dd-description"> : 
+					table utilisée que pour la phase de recette du projet, elle définit les utilisateurs de test qui seront les seuls à déclencher le marquage des pages.
+					Il faut commenter cette table en phase de production, car sinon, tout utilisateur dont l’<span style="font-size:small"><span style="font-style:italic">UID</span></span> ne sera pas dans cette table ne sera pas marqué.
+					
+					Une entrée sera de la forme : <table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell">"<span style="font-size:small"><span style="font-style:italic">UID</span></span>" : "<span style="font-size:small"><span style="font-style:italic">login</span></span>".</td></tr>
+</table>
+					En fait le <span style="font-size:small"><span style="font-style:italic">login</span></span> n’est pas utilisé, seul l’<span style="font-size:small"><span style="font-style:italic">UID</span></span> a de l’importance.
+					
+				</dd><dt class="dt-description"><span style="font-style:italic">InfoENT</span>4<span style="font-style:italic">esciti</span>.<span style="font-style:italic">parametre</span></dt><dd class="dd-description"> : 
+					table associative entre un nom de paramètre et un sélecteur <span style="font-size:small"><span style="font-style:italic">CSS</span></span>.
+					Permet de changer les sélecteurs sans avoir à redéployer les applications, le portail notamment.
+					
+					Par exemple, la ligne :<table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell">"%<span style="font-style:italic">portletPortail</span>" : "<span style="font-size:small"><span style="font-style:italic">.up-portlet-wrapper</span></span>",</td></tr>
+</table>
+					permet de déclarer que les ‹div› contenant les portlets du portail 
+					ont la classe <span style="font-size:small"><span style="font-style:italic">CSS</span></span> ‘.up-portlet-wrapper’ qui suffit à les identifier.
+					
+				</dd><dt class="dt-description"><span style="font-style:italic">InfoENT</span>4<span style="font-style:italic">esciti</span>.<span style="font-style:italic">onClickSelector</span>2<span style="font-style:italic">service</span></dt><dd class="dd-description"> :
+					table associative entre un sélecteur <span style="font-size:small"><span style="font-style:italic">CSS</span></span> et un service.
+					À tout objet correspondant au sélecteur sera associé un événement onclick de marquage pour le service donné.
+					
+					Une entrée sera de la forme : <table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell">"sélecteur css" : "<span style="font-size:small"><span style="font-style:italic">LIB_SERVICE</span></span>".</td></tr>
+</table>
+					
+					Par exemple : <table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell">".createListeDialog button" :  "Courrier_Electronique",</td></tr>
+</table>
+					marquera ‘Courrier_Electronique’ tous les clics sur les boutons de classe <span style="font-size:small"><span style="font-style:italic">CSS</span></span> ‘createListeDialog’.
+			</dd></dl><p>
+			
+			</p>
+<!--TOC subsubsection id="sec8" Les fonctions qui préparent le marquage.-->
+<h4 id="sec8" class="subsubsection">3.2.2  Les fonctions qui préparent le marquage.</h4><!--SEC END --><p>
+			Voici les fonctions JavaScript qui fixent les données utilisateur, 
+			utilisées dans les pages du portail et autres applications pour paramétrer le marqueur correspondant à la page :
+			</p><dl class="description"><dt class="dt-description">
+				
+				<br>
+<p>				</p><span style="font-style:italic">InfoENT</span>4<span style="font-style:italic">esciti</span>.<span style="font-style:italic">setObjectClass</span>(<span style="font-style:italic">objectClass</span>)</dt><dd class="dd-description"> : 
+					déduit le profil de l’utilisateur (<span style="font-size:small"><span style="font-style:italic">ID_PROFILE</span></span>), à partir de l’<span style="font-size:small"><span style="font-style:italic">ObjectClass</span></span> passé en paramètre, à l’aide de la table 
+					<span style="font-style:italic">objClass</span>2<span style="font-style:italic">profile</span>.
+					Met à jour le cookie avec le profil trouvé.
+					Si l’<span style="font-size:small"><span style="font-style:italic">ObjectClass</span></span> n’est pas renseigné ou aucun profil ne peut-être déduit alors on récupère la valeur précédente du cookie.
+					À défaut de valeur, le profil sera fixé à ‘<span style="font-size:small"><span style="font-style:italic">Autre</span></span>’.
+					
+				</dd><dt class="dt-description"><span style="font-style:italic">InfoENT</span>4<span style="font-style:italic">esciti</span>.<span style="font-style:italic">setSiren</span>(<span style="font-style:italic">siren</span>)</dt><dd class="dd-description"> :
+					déduit le numéro d’établissement <span style="font-size:small">XiTi</span> (<span style="font-size:small"><span style="font-style:italic">ID_ETAB</span></span>), à partir du <span style="font-size:small"><span style="font-style:italic">SIREN</span></span> 
+					passé en paramètre, à l’aide de la table <span style="font-style:italic">siren</span>2<span style="font-style:italic">etab</span>.
+					Met à jour le cookie avec le numéro d’établissement trouvé.
+					Si le <span style="font-size:small"><span style="font-style:italic">SIREN</span></span> n’est pas renseigné on récupère alors la valeur précédente du cookie.
+					Si le <span style="font-size:small"><span style="font-style:italic">SIREN</span></span> ne correspond à aucun établissement de la table, le cookie est réinitialisé.
+					
+				</dd><dt class="dt-description"><span style="font-style:italic">InfoENT</span>4<span style="font-style:italic">esciti</span>.<span style="font-style:italic">setUai</span>(<span style="font-style:italic">UAI</span>)</dt><dd class="dd-description"> :
+					déduit le numéro d’établissement <span style="font-size:small">XiTi</span> (<span style="font-size:small"><span style="font-style:italic">ID_ETAB</span></span>), à partir de l’<span style="font-size:small"><span style="font-style:italic">UAI</span></span> passé en paramètre, 
+					à l’aide de la table <span style="font-style:italic">uai</span>2<span style="font-style:italic">siren</span> et <span style="font-style:italic">setSiren</span>().
+					
+					Met à jour le cookie avec le numéro d’établissement trouvé.
+					Si l’<span style="font-size:small"><span style="font-style:italic">UAI</span></span> n’est pas renseigné ou s’il ne correspond à aucun établissement 
+					on récupère alors la valeur précédente du cookie.
+					
+					Attention, certaines structures n’ont pas d’<span style="font-size:small"><span style="font-style:italic">UAI</span></span> mais toutes ont un <span style="font-size:small"><span style="font-style:italic">SIREN</span></span>. 
+					
+					Certains individus travaillent sur plusieurs établissements, 
+					dans l’<span style="font-size:small">ENT</span> <span style="font-style:italic">NetoCentre</span> c’est l’<span style="font-size:small"><span style="font-style:italic">UAI</span></span> courant qui servira pour le marquage.
+					S’il n’est pas connu on utilisera le <span style="font-size:small"><span style="font-style:italic">SIREN</span></span> de l’établissement de rattachement.
+					
+				</dd><dt class="dt-description"><span style="font-style:italic">InfoENT</span>4<span style="font-style:italic">esciti</span>.<span style="font-style:italic">setUid</span>(<span style="font-style:italic">uid</span>)</dt><dd class="dd-description"> : 
+					fixe l’<span style="font-size:small"><span style="font-style:italic">UID</span></span> de la personne dans le cookie (<span style="font-size:small"><span style="font-style:italic">ID_PERSO</span></span>).
+					
+					Si l’<span style="font-size:small"><span style="font-style:italic">UID</span></span> diffère de la valeur précédente du cookie, 
+					les autres valeurs du cookie (établissement et profil) sont réinitialisées.
+					C’est pourquoi, dans le marquage d’une page, l’<span style="font-size:small"><span style="font-style:italic">UID</span></span> est la première valeur à renseigner.
+					Sinon les autres risquent la réinitialisation. 
+			</dd></dl><p>
+			
+			</p>
+<!--TOC subsubsection id="sec9" Les fonctions qui posent les marqueurs.-->
+<h4 id="sec9" class="subsubsection">3.2.3  Les fonctions qui posent les marqueurs.</h4><!--SEC END --><p>
+			Ces fonctions placent le marqueur <span style="font-size:small">XiTi</span> dans la page, 
+			elles ne peuvent servir que si les données de marquage sont renseignées dans le cookie à l’aide des fonctions précédentes 
+			(pas forcément dans la même page):
+			
+			</p><dl class="description"><dt class="dt-description"> 
+				
+				<br>
+
+				<span style="font-style:italic">InfoENT</span>4<span style="font-style:italic">esciti</span>.<span style="font-style:italic">callByService</span>(<span style="font-size:small"><span style="font-style:italic">LIB_SERVICE</span></span>)</dt><dd class="dd-description">:
+					demande de marquage pour le service <span style="font-size:small"><span style="font-style:italic">LIB_SERVICE</span></span>, l’<span style="font-size:small"><span style="font-style:italic">ID_SERVICE</span></span> sera déduit à l’aide de la table <span style="font-style:italic">service</span>2<span style="font-style:italic">id</span>.
+					Le marquage sera effectué, si et seulement si, le cookie est correctement renseigné (<span style="font-size:small"><span style="font-style:italic">UID</span></span>, établissement et profil).
+					Il y a appel du script <span style="font-size:small">XiTi</span>, <span style="font-family:monospace">xtfirst_ENT.js</span>.<p>				</p></dd><dt class="dt-description"><span style="font-style:italic">InfoENT</span>4<span style="font-style:italic">esciti</span>.<span style="font-style:italic">callByContextInCssClass</span>(<span style="font-style:italic">jQuery</span>, <span style="font-style:italic">selectorCss</span>)</dt><dd class="dd-description">:
+					demande de marquage pour tout tag <span style="font-size:small"><span style="font-style:italic">HTML</span></span> de la page correspondant au <span style="font-size:small"><span style="font-style:italic">selectorCss</span></span> 
+					et ayant une classe css clé de la table <span style="font-style:italic">context</span>2<span style="font-style:italic">Service</span>.
+					Si <span style="font-size:small"><span style="font-style:italic">selectorCss</span></span> commence par %, alors on considère que c’est un paramètre dont la valeur (le sélecteur css) 
+					est dans la table <span style="font-style:italic">parametre</span>.
+					Il faut passer la référence du <span style="font-size:small"><span style="font-style:italic">jQuery</span></span> déjà chargé par la page.
+					
+					Par exemple, on peut marquer les portlets du portail avec l’appel suivant:
+						<table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell"><span style="font-style:italic">InfoENT</span>4<span style="font-style:italic">esciti</span>.<span style="font-style:italic">callByContextInCssClass</span>(<span style="font-style:italic">up</span>.<span style="font-style:italic">jQuery</span>, ′.<span style="font-style:italic">up</span>−<span style="font-style:italic">portlet</span>−<span style="font-style:italic">wrapper</span>′);</td></tr>
+</table>
+					ou si l’on garde l’exemple déjà donné: 
+						<table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell"><span style="font-style:italic">InfoENT</span>4<span style="font-style:italic">esciti</span>.<span style="font-style:italic">callByContextInCssClass</span>(<span style="font-style:italic">up</span>.<span style="font-style:italic">jQuery</span>, ′%<span style="font-style:italic">portletPortail</span>′);</td></tr>
+</table>
+						
+					Les portlets ont toutes une ‹div› ayant pour classe ’<span style="font-style:italic">up</span>−<span style="font-style:italic">portlet</span>−<span style="font-style:italic">wrapper</span>’ et une classe valant le ‘fname’ du service.
+					Si l’on renseigne la table <span style="font-style:italic">context</span>2<span style="font-style:italic">Service</span> avec le ‘fname’ associé au <span style="font-size:small"><span style="font-style:italic">LIB_SERVICE</span></span> <span style="font-size:small">XiTi</span> souhaité,
+					alors la page sera marquée avec ce <span style="font-size:small"><span style="font-style:italic">LIB_SERVICE</span></span>.
+					Si plusieurs portlets correspondent, avec différent <span style="font-size:small"><span style="font-style:italic">LIB_SERVICE</span></span>, la page sera marquée pour chacun de ces services.
+					Mais, chaque <span style="font-size:small"><span style="font-style:italic">LIB_SERVICE</span></span> ne devrait marquer qu’une fois.
+			
+					Cette méthode retourne ’<span style="font-style:italic">true</span>’ si un marqueur a été posé.
+				</dd><dt class="dt-description"><span style="font-style:italic">InfoENT</span>4<span style="font-style:italic">esciti</span>.<span style="font-style:italic">marqueOnClick</span>(<span style="font-style:italic">jQuery</span>, <span style="font-style:italic">cssAncreSelector</span>)</dt><dd class="dd-description">:
+					place tous les marqueurs onclick définis dans la table <span style="font-style:italic">onClickSelector</span>2<span style="font-style:italic">service</span>.
+					
+					Place, en plus, des marquages onclick sur toutes les ancres sélectionnées par <span style="font-size:small"><span style="font-style:italic">cssAncreSelector</span></span> ayant dans leurs
+					 propriétés <span style="font-style:italic">href</span>, une clé de la table <span style="font-style:italic">href</span>2<span style="font-style:italic">Service</span>.
+					
+					Si <span style="font-size:small"><span style="font-style:italic">cssAncreSelector</span></span> commence par % alors on considère 
+					que c’est un paramètre dont la valeur est dans la table <span style="font-style:italic">parametre</span>.
+					
+					Pour la sélection et la pause des événements onclick la référence au <span style="font-size:small"><span style="font-style:italic">jQuery</span></span> passée en paramètre est utilisée.
+					
+					Par exemple, on peut marquer les liens du portail sur les applications extérieures avec:
+						<table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell"><span style="font-style:italic">InfoENT</span>4<span style="font-style:italic">esciti</span>.<span style="font-style:italic">marqueOnClick</span>(<span style="font-style:italic">up</span>.<span style="font-style:italic">jQuery</span>, ′<span style="font-style:italic">a</span>.<span style="font-style:italic">externalLink</span>′);</td></tr>
+</table>
+						
+					Si la page contient le lien suivant que l’on souhaite marquer:
+					<br>
+
+					<pre class="verbatim"> 
+       &lt;a  class="externalLink" 
+           target="_blank" 
+           href="/portail/ExternalURLStats?
+           fname=PortailArenA&amp;service=https://extrante.ac-orleans-tours.fr/arena/" 
+           title="Portail ArenA"&gt;
+     </pre>					
+					Il suffit d’ajouter la clé ‘arena’ (mot discriminant de href) 
+					dans la table <span style="font-style:italic">href</span>2<span style="font-style:italic">Service</span> avec le bon <span style="font-size:small"><span style="font-style:italic">LIB_SERVICE</span></span> associé, ‘Orientation’ par exemple.
+					
+					</dd><dt class="dt-description"><span style="font-style:italic">InfoENT</span>4<span style="font-style:italic">esciti</span><sub><span style="font-style:italic">c</span></sub><span style="font-style:italic">allById</span>(<span style="font-style:italic">tagName</span>, <span style="font-style:italic">defautService</span>)</dt><dd class="dd-description">:
+							recherche le premier tag de type <span style="font-size:small"><span style="font-style:italic">tagName</span></span> et utilise son identifiant (id) pour déduire à l’aide de la table 
+							<span style="font-style:italic">txt</span>2<span style="font-style:italic">Service</span> le service de marquage (<span style="font-size:small"><span style="font-style:italic">LIB_SERVICE</span></span>).
+							
+							Si aucun service n’est trouvé, le marquage se fait avec le <span style="font-size:small"><span style="font-style:italic">defautService</span></span>.
+							
+						Cette fonction pose donc un et un seul marqueur.
+			</dd></dl><p>
+			
+			
+</p>
+<!--TOC section id="sec10" Le marquage du portail de l’ENT <span style="font-style:italic">NetoCentre</span>.-->
+<h2 id="sec10" class="section">4  Le marquage du portail de l’ENT <span style="font-style:italic">NetoCentre</span>.</h2><!--SEC END --><p>
+			Les pages du portail sont dynamiquement créées à partir de page <span style="font-family:monospace">xsl</span>. 
+		Dans l’<span style="font-size:small">ENT</span> <span style="font-style:italic">NetoCentre</span>, c’est le thème ‘universality’ qui est utilisé, donc les pages <span style="font-family:monospace">xsl</span> à modifier sont dans l’arborescence 
+		<span style="font-family:monospace">src/main/ressources/layout/theme/universality</span>.
+		Le tag ‹body› de chaque page est géré dans <span style="font-family:monospace">page.xsl</span>. C’est donc là, qu’il faut placer les marqueurs, avant la fermeture du ‹body›.
+		Pour marquer, il faut connaître les informations sur l’utilisateur (<span style="font-size:small"><span style="font-style:italic">UID</span></span>, <span style="font-size:small"><span style="font-style:italic">ObjectClass</span></span>, <span style="font-size:small"><span style="font-style:italic">SIREN</span></span> ou <span style="font-size:small"><span style="font-style:italic">UAI</span></span>).
+		L’<span style="font-size:small"><span style="font-style:italic">UID</span></span> et l’<span style="font-size:small"><span style="font-style:italic">UAI</span></span> courant sont déjà accessibles via des paramètres, <span style="font-size:small"><span style="font-style:italic">USER_ID</span></span> et <span style="font-size:small"><span style="font-style:italic">UAICourant</span></span>, déclarés dans <span style="font-family:monospace">universality.xsl</span>. 
+		De la même manière, nous allons déclarer deux nouveaux paramètres, <span style="font-size:small"><span style="font-style:italic">OBJECTCLASS</span></span> et <span style="font-size:small"><span style="font-style:italic">SIREN</span></span>, dans <span style="font-family:monospace">universalité.xsl</span>.
+				
+		Les paramètres <span style="font-size:small"><span style="font-style:italic">USER_ID</span></span> et <span style="font-size:small"><span style="font-style:italic">UAICourant</span></span> sont mis à jour par un bean de la classe java 
+		<span style="font-family:monospace">org.jasig.portal.rendering.xslt.StaticTransformerConfigurationSource</span>,
+		Ils sont tirés directement, d’attributs du compte de la personne connectée.
+		L’injections de ce bean, dans la configuration du portail, se fait dans le fichier <span style="font-family:monospace">renderingPipelineContext.xml</span>.
+		
+		Pour le paramètre <span style="font-size:small"><span style="font-style:italic">SIREN</span></span>, il n’existe pas d’attribut qui donne directement sa valeur; 
+		l’attribut, dont on dispose, est le <span style="font-size:small"><span style="font-style:italic">DN</span></span> de la structure de rattachement.
+		Ce <span style="font-size:small"><span style="font-style:italic">DN</span></span> contient le <span style="font-size:small"><span style="font-style:italic">SIREN</span></span>, mais ce n’est pas direct, il faut le déduire.
+		Une nouvelle classe, <span style="font-family:monospace">org.esco.portal.rendering.xslt.CustomizeStaticTransformerConfigurationSource</span>,
+		a donc été créée, sur le modèle de <span style="font-family:monospace">StaticTransformerConfigurationSource</span>. 
+		Elle permet, en appliquant une regex, de déduire une information contenue dans un attribut multi ou mono-valué.
+		
+		Le paramètre <span style="font-size:small"><span style="font-style:italic">OBJECTCLASS</span></span> sera calculé à partir des attributs utilisateur filtrés par <span style="font-family:monospace">CustomizeStaticTransformerConfigurationSource</span>, pour obtenir un <span style="font-size:small"><span style="font-style:italic">ObjectClass</span></span> unique 
+		définissant le profil de l’utilisateur.
+		
+		</p>
+<!--TOC subsection id="sec11" Modification de <span style="font-family:monospace">renderingPipelineContext.xml</span>.-->
+<h3 id="sec11" class="subsection">4.1  Modification de <span style="font-family:monospace">renderingPipelineContext.xml</span>.</h3><!--SEC END --><p>
+			Le chemin du fichier relatif au projet est : <span style="font-family:monospace">src/main/resources/properties/contexts/renderingPipelineContext.xml</span>.
+			Dans la déclaration du bean <span style="font-style:italic">themeTransformComponent</span>:
+			pour la propriété <span style="font-style:italic">xsltParameterSource</span>; il faut ajouter dans la liste des sources notre bean (<span style="font-family:monospace">CustomizeStaticTransformerConfigurationSource</span>).
+			Ce qui donne, si on le place après le bean de classe <span style="font-family:monospace">StaticTransformerConfigurationSource</span>:
+		</p><div class="lstlisting"><span style="font-size:small">...</span><span style="font-size:small">
+</span><span style="font-size:small">&lt;</span><span style="font-size:small">bean</span><span style="font-size:small"> </span><span style="font-size:small">id</span><span style="font-size:small">="</span><span style="font-size:small">themeTransformComponent</span><span style="font-size:small">"</span><span style="font-size:small">
+</span><span style="font-size:small">      </span><span style="font-size:small">class</span><span style="font-size:small">="</span><span style="font-size:small">org</span><span style="font-size:small">.</span><span style="font-size:small">jasig</span><span style="font-size:small">.</span><span style="font-size:small">portal</span><span style="font-size:small">.</span><span style="font-size:small">rendering</span><span style="font-size:small">.</span><span style="font-size:small">xslt</span><span style="font-size:small">.</span><span style="font-size:small">XSLTComponent</span><span style="font-size:small">"&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">  ...</span><span style="font-size:small">
+</span><span style="font-size:small">  &lt;</span><span style="font-size:small">property</span><span style="font-size:small"> </span><span style="font-size:small">name</span><span style="font-size:small">="</span><span style="font-size:small">xsltParameterSource</span><span style="font-size:small">"&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">    &lt;</span><span style="font-size:small">bean</span><span style="font-size:small"> </span><span style="font-size:small">class</span><span style="font-size:small">="</span><span style="font-size:small">org</span><span style="font-size:small">.</span><span style="font-size:small">jasig</span><span style="font-size:small">.</span><span style="font-size:small">portal</span><span style="font-size:small">.</span><span style="font-size:small">rendering</span><span style="font-size:small">.</span><span style="font-size:small">xslt</span><span style="font-size:small">.</span><span style="font-size:small">MergingTransformerConfigurationSource</span><span style="font-size:small">"&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">      &lt;</span><span style="font-size:small">property</span><span style="font-size:small"> </span><span style="font-size:small">name</span><span style="font-size:small">="</span><span style="font-size:small">sources</span><span style="font-size:small">"&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">        &lt;</span><span style="font-size:small">list</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">           ...</span><span style="font-size:small">
+</span><span style="font-size:small">                &lt;!-- </span><span style="font-size:small">le</span><span style="font-size:small"> </span><span style="font-size:small">bean</span><span style="font-size:small"> </span><span style="font-size:small">deja</span><span style="font-size:small"> </span><span style="font-size:small">defini</span><span style="font-size:small"> </span><span style="font-size:small">pour</span><span style="font-size:small"> </span><span style="font-size:small">verifier</span><span style="font-size:small"> </span><span style="font-size:small">les</span><span style="font-size:small"> </span><span style="font-size:small">entrees</span><span style="font-size:small"> </span><span style="font-size:small">USER_ID</span><span style="font-size:small"> </span><span style="font-size:small">et</span><span style="font-size:small"> </span><span style="font-size:small">UAICourant</span><span style="font-size:small"> --&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">          &lt;</span><span style="font-size:small">bean</span><span style="font-size:small"> </span><span style="font-size:small">class</span><span style="font-size:small">="</span><span style="font-size:small">org</span><span style="font-size:small">.</span><span style="font-size:small">jasig</span><span style="font-size:small">.</span><span style="font-size:small">portal</span><span style="font-size:small">.</span><span style="font-size:small">rendering</span><span style="font-size:small">.</span><span style="font-size:small">xslt</span><span style="font-size:small">.</span><span style="font-size:small">
+</span><span style="font-size:small">                                    </span><span style="font-size:small">StaticTransformerConfigurationSource</span><span style="font-size:small">"&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">            &lt;</span><span style="font-size:small">property</span><span style="font-size:small"> </span><span style="font-size:small">name</span><span style="font-size:small">="</span><span style="font-size:small">parameters</span><span style="font-size:small">"&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">            ...</span><span style="font-size:small">
+</span><span style="font-size:small">            &lt;/</span><span style="font-size:small">property</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">            &lt;</span><span style="font-size:small">property</span><span style="font-size:small"> </span><span style="font-size:small">name</span><span style="font-size:small">="</span><span style="font-size:small">parameterExpressions</span><span style="font-size:small">"&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">              &lt;</span><span style="font-size:small">map</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">                ...</span><span style="font-size:small">
+</span><span style="font-size:small">                &lt;</span><span style="font-size:small">entry</span><span style="font-size:small"> </span><span style="font-size:small">key</span><span style="font-size:small">="</span><span style="font-size:small">USER_ID</span><span style="font-size:small">" </span><span style="font-size:small">value</span><span style="font-size:small">="</span><span style="font-size:small">person</span><span style="font-size:small">.</span><span style="font-size:small">userName</span><span style="font-size:small">" /&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">                &lt;</span><span style="font-size:small">entry</span><span style="font-size:small"> </span><span style="font-size:small">key</span><span style="font-size:small">="</span><span style="font-size:small">UAICourant</span><span style="font-size:small">" </span><span style="font-size:small">value</span><span style="font-size:small">="</span><span style="font-size:small">person</span><span style="font-size:small">.</span><span style="font-size:small">getAttribute</span><span style="font-size:small">('</span><span style="font-size:small">ESCOUAICourant</span><span style="font-size:small">')" /&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">                ...</span><span style="font-size:small">
+</span><span style="font-size:small">              &lt;/</span><span style="font-size:small">map</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">            &lt;/</span><span style="font-size:small">property</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">             ...</span><span style="font-size:small">
+</span><span style="font-size:small">          &lt;/</span><span style="font-size:small">bean</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">                  &lt;!-- </span><span style="font-size:small">declaration</span><span style="font-size:small"> </span><span style="font-size:small">du</span><span style="font-size:small"> </span><span style="font-size:small">nouveau</span><span style="font-size:small"> </span><span style="font-size:small">bean</span><span style="font-size:small"> --&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">          &lt;</span><span style="font-size:small">bean</span><span style="font-size:small"> </span><span style="font-size:small">class</span><span style="font-size:small">="</span><span style="font-size:small">org</span><span style="font-size:small">.</span><span style="font-size:small">esco</span><span style="font-size:small">.</span><span style="font-size:small">portal</span><span style="font-size:small">.</span><span style="font-size:small">rendering</span><span style="font-size:small">.</span><span style="font-size:small">xslt</span><span style="font-size:small">.</span><span style="font-size:small">
+</span><span style="font-size:small">                                        </span><span style="font-size:small">CustomizeStaticTransformerConfigurationSource</span><span style="font-size:small">"&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">            &lt;</span><span style="font-size:small">property</span><span style="font-size:small"> </span><span style="font-size:small">name</span><span style="font-size:small">="</span><span style="font-size:small">regexMap</span><span style="font-size:small">"&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">                    &lt;!-- </span><span style="font-size:small">definit</span><span style="font-size:small"> </span><span style="font-size:small">les</span><span style="font-size:small"> </span><span style="font-size:small">regex</span><span style="font-size:small"> </span><span style="font-size:small">pour</span><span style="font-size:small"> </span><span style="font-size:small">le</span><span style="font-size:small"> </span><span style="font-size:small">filtrage</span><span style="font-size:small"> --&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">              &lt;</span><span style="font-size:small">map</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">                &lt;</span><span style="font-size:small">entry</span><span style="font-size:small"> </span><span style="font-size:small">key</span><span style="font-size:small">="</span><span style="font-size:small">OBJECTCLASS</span><span style="font-size:small">"</span><span style="font-size:small">
+</span><span style="font-size:small">                       </span><span style="font-size:small">value</span><span style="font-size:small">=".*(   </span><span style="font-size:small">ENTEleve</span><span style="font-size:small">
+</span><span style="font-size:small">                                    |</span><span style="font-size:small">ENTAuxEnseignant</span><span style="font-size:small">
+</span><span style="font-size:small">                                    |</span><span style="font-size:small">ENTAuxPersRelEleve</span><span style="font-size:small">
+</span><span style="font-size:small">                                    |</span><span style="font-size:small">ENTAuxNonEnsEtab</span><span style="font-size:small">
+</span><span style="font-size:small">                                    |</span><span style="font-size:small">ENTAuxNonEnsCollLoc</span><span style="font-size:small">).*"</span><span style="font-size:small">
+</span><span style="font-size:small">                   /&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">                &lt;</span><span style="font-size:small">entry</span><span style="font-size:small"> </span><span style="font-size:small">key</span><span style="font-size:small">="</span><span style="font-size:small">SIREN</span><span style="font-size:small">"</span><span style="font-size:small">
+</span><span style="font-size:small">                       </span><span style="font-size:small">value</span><span style="font-size:small">="</span><span style="font-size:small">ENTStructureSIREN</span><span style="font-size:small">=([^,]+),</span><span style="font-size:small">
+</span><span style="font-size:small">                                 </span><span style="font-size:small">ou</span><span style="font-size:small">=</span><span style="font-size:small">structures</span><span style="font-size:small">,</span><span style="font-size:small">dc</span><span style="font-size:small">=</span><span style="font-size:small">esco</span><span style="font-size:small">-</span><span style="font-size:small">centre</span><span style="font-size:small">,</span><span style="font-size:small">dc</span><span style="font-size:small">=</span><span style="font-size:small">fr</span><span style="font-size:small">" /&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">              &lt;/</span><span style="font-size:small">map</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">            &lt;/</span><span style="font-size:small">property</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">            &lt;</span><span style="font-size:small">property</span><span style="font-size:small"> </span><span style="font-size:small">name</span><span style="font-size:small">="</span><span style="font-size:small">parameterExpressions</span><span style="font-size:small">"&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">
+</span><span style="font-size:small">              &lt;</span><span style="font-size:small">map</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">                &lt;</span><span style="font-size:small">entry</span><span style="font-size:small"> </span><span style="font-size:small">key</span><span style="font-size:small">="</span><span style="font-size:small">OBJECTCLASS</span><span style="font-size:small">"</span><span style="font-size:small">
+</span><span style="font-size:small">                       </span><span style="font-size:small">value</span><span style="font-size:small">="</span><span style="font-size:small">person</span><span style="font-size:small">.</span><span style="font-size:small">getAttributeValues</span><span style="font-size:small">('\</span><span style="font-size:small">objectclass</span><span style="font-size:small">\')" /&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">                &lt;</span><span style="font-size:small">entry</span><span style="font-size:small"> </span><span style="font-size:small">key</span><span style="font-size:small">="</span><span style="font-size:small">SIREN</span><span style="font-size:small">"</span><span style="font-size:small">
+</span><span style="font-size:small">                       </span><span style="font-size:small">value</span><span style="font-size:small">="</span><span style="font-size:small">person</span><span style="font-size:small">.</span><span style="font-size:small">getAttribute</span><span style="font-size:small">('</span><span style="font-size:small">ENTPersonStructRattach</span><span style="font-size:small">')" /&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">              &lt;/</span><span style="font-size:small">map</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">            &lt;/</span><span style="font-size:small">property</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">          &lt;/</span><span style="font-size:small">bean</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">          ...</span><span style="font-size:small">
+</span><span style="font-size:small">        &lt;/</span><span style="font-size:small">list</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">      &lt;/</span><span style="font-size:small">property</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">    &lt;/</span><span style="font-size:small">bean</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">  &lt;/</span><span style="font-size:small">property</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">&lt;/</span><span style="font-size:small">bean</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">...</span></div><p>		</p>
+<!--TOC subsection id="sec12" Modification de <span style="font-family:monospace">universality.xsl</span>.-->
+<h3 id="sec12" class="subsection">4.2  Modification de <span style="font-family:monospace">universality.xsl</span>.</h3><!--SEC END --><p>
+			Le chemin du fichier relatif au projet est : <span style="font-family:monospace">src/main/ressources/layout/theme/universality/universality.xsl</span>.
+			Ici, il faut déclarer les nouveaux attributs, <span style="font-size:small"><span style="font-style:italic">OBJECTCLASS</span></span> et <span style="font-size:small"><span style="font-style:italic">SIREN</span></span>, sans valeur par défaut.
+			Si, on les place avant les déclarations de <span style="font-size:small"><span style="font-style:italic">USER_NAME</span></span> et <span style="font-size:small"><span style="font-style:italic">UAICourant</span></span>, cela donne, par exemple:
+		</p><div class="lstlisting"><span style="font-size:small">        ...</span><span style="font-size:small">
+</span><span style="font-size:small">      &lt;!-- </span><span style="font-size:small">GRENN</span><span style="font-size:small">
+</span><span style="font-size:small">        </span><span style="font-size:small">xiti</span><span style="font-size:small"> </span><span style="font-size:small">Setting</span><span style="font-size:small"> --&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">        &lt;</span><span style="font-size:small">xsl</span><span style="font-size:small">:</span><span style="font-size:small">param</span><span style="font-size:small"> </span><span style="font-size:small">name</span><span style="font-size:small">="</span><span style="font-size:small">OBJECTCLASS</span><span style="font-size:small">"&gt;&lt;/</span><span style="font-size:small">xsl</span><span style="font-size:small">:</span><span style="font-size:small">param</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">        &lt;</span><span style="font-size:small">xsl</span><span style="font-size:small">:</span><span style="font-size:small">param</span><span style="font-size:small"> </span><span style="font-size:small">name</span><span style="font-size:small">="</span><span style="font-size:small">SIREN</span><span style="font-size:small">"&gt;&lt;/</span><span style="font-size:small">xsl</span><span style="font-size:small">:</span><span style="font-size:small">param</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">
+</span><span style="font-size:small">      &lt;!-- ****** </span><span style="font-size:small">PORTAL</span><span style="font-size:small"> </span><span style="font-size:small">SETTINGS</span><span style="font-size:small"> ****** --&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">      &lt;!--</span><span style="font-size:small">
+</span><span style="font-size:small">        | </span><span style="font-size:small">YELLOW</span><span style="font-size:small">
+</span><span style="font-size:small">        | </span><span style="font-size:small">Portal</span><span style="font-size:small"> </span><span style="font-size:small">Settings</span><span style="font-size:small"> </span><span style="font-size:small">should</span><span style="font-size:small"> </span><span style="font-size:small">generally</span><span style="font-size:small"> </span><span style="font-size:small">not</span><span style="font-size:small"> </span><span style="font-size:small">be</span><span style="font-size:small"> (</span><span style="font-size:small">and</span><span style="font-size:small"> </span><span style="font-size:small">not</span><span style="font-size:small"> </span><span style="font-size:small">need</span><span style="font-size:small"> </span><span style="font-size:small">to</span><span style="font-size:small"> </span><span style="font-size:small">be</span><span style="font-size:small">) </span><span style="font-size:small">modified</span><span style="font-size:small">.</span><span style="font-size:small">
+</span><span style="font-size:small">         --&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">         &lt;</span><span style="font-size:small">xsl</span><span style="font-size:small">:</span><span style="font-size:small">param</span><span style="font-size:small"> </span><span style="font-size:small">name</span><span style="font-size:small">="</span><span style="font-size:small">USER_ID</span><span style="font-size:small">"&gt;</span><span style="font-size:small">guest</span><span style="font-size:small">&lt;/</span><span style="font-size:small">xsl</span><span style="font-size:small">:</span><span style="font-size:small">param</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">         &lt;</span><span style="font-size:small">xsl</span><span style="font-size:small">:</span><span style="font-size:small">param</span><span style="font-size:small"> </span><span style="font-size:small">name</span><span style="font-size:small">="</span><span style="font-size:small">userName</span><span style="font-size:small">"&gt;</span><span style="font-size:small">Guest</span><span style="font-size:small"> </span><span style="font-size:small">User</span><span style="font-size:small">&lt;/</span><span style="font-size:small">xsl</span><span style="font-size:small">:</span><span style="font-size:small">param</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">         &lt;</span><span style="font-size:small">xsl</span><span style="font-size:small">:</span><span style="font-size:small">param</span><span style="font-size:small"> </span><span style="font-size:small">name</span><span style="font-size:small">="</span><span style="font-size:small">USER_NAME</span><span style="font-size:small">"&gt;&lt;</span><span style="font-size:small">xsl</span><span style="font-size:small">:</span><span style="font-size:small">value</span><span style="font-size:small">-</span><span style="font-size:small">of</span><span style="font-size:small"> </span><span style="font-size:small">select</span><span style="font-size:small">="</span><span style="font-size:small">$userName</span><span style="font-size:small">"/&gt;&lt;/</span><span style="font-size:small">xsl</span><span style="font-size:small">:</span><span style="font-size:small">param</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">        &lt;</span><span style="font-size:small">xsl</span><span style="font-size:small">:</span><span style="font-size:small">param</span><span style="font-size:small"> </span><span style="font-size:small">name</span><span style="font-size:small">="</span><span style="font-size:small">UAICourant</span><span style="font-size:small">"&gt;&lt;/</span><span style="font-size:small">xsl</span><span style="font-size:small">:</span><span style="font-size:small">param</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">      ...</span></div><p>		
+		</p>
+<!--TOC subsection id="sec13" Modification de <span style="font-family:monospace">page.xsl</span>.-->
+<h3 id="sec13" class="subsection">4.3  Modification de <span style="font-family:monospace">page.xsl</span>.</h3><!--SEC END --><p>
+			Le chemin du fichier relatif au projet est : 	<span style="font-family:monospace">src/main/ressources/layout/theme/universality/page.xsl</span>.
+			Il faut placer, dans la déclaration ‹body› de chaque page, plusieurs tags ‹script›.
+			Le premier, pour faire le chargement du code JavaScript, <a href="../src/esciti.js">esciti.js</a>.
+			Le deuxième, pour initialiser les données utilisateur.
+			Le dernier, pour marquer la page. 
+			
+			Les deux premiers seront placés, dès l’ouverture du ‹body›, pour que l’initialisation soit disponible, 
+			si besoin, dans les portlets. 
+			Le dernier sera placé à la fermeture du ‹body›. Les marqueurs <span style="font-size:small">XiTi</span> seront donc les derniers tags dans le ‹body›.
+			
+			Ce qui donne dans <span style="font-family:monospace">page.xsl</span>:
+			</p><div class="lstlisting"><span style="font-size:small">...</span><span style="font-size:small">
+</span><span style="font-size:small">&lt;</span><span style="font-size:small">body</span><span style="font-size:small"> </span><span style="font-size:small">id</span><span style="font-size:small">="</span><span style="font-size:small">portal</span><span style="font-size:small">" </span><span style="font-size:small">class</span><span style="font-size:small">="</span><span style="font-size:small">up</span><span style="font-size:small"> {</span><span style="font-size:small">$FLUID_THEME_CLASS</span><span style="font-size:small">}"&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">    &lt;!--  </span><span style="font-size:small">Ajout</span><span style="font-size:small"> </span><span style="font-size:small">de</span><span style="font-size:small"> </span><span style="font-size:small">script</span><span style="font-size:small"> </span><span style="font-size:small">pour</span><span style="font-size:small"> </span><span style="font-size:small">XITI</span><span style="font-size:small"> --&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">      &lt;!-- </span><span style="font-size:small">chargement</span><span style="font-size:small"> </span><span style="font-size:small">esciti</span><span style="font-size:small">.</span><span style="font-size:small">js</span><span style="font-size:small"> --&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">  &lt;</span><span style="font-size:small">script</span><span style="font-size:small"> </span><span style="font-size:small">type</span><span style="font-size:small">="</span><span style="font-size:small">text</span><span style="font-size:small">/</span><span style="font-size:small">javascript</span><span style="font-size:small">" </span><span style="font-size:small">src</span><span style="font-size:small">="/</span><span style="font-size:small">esciti</span><span style="font-size:small">/</span><span style="font-size:small">js</span><span style="font-size:small">/</span><span style="font-size:small">esciti</span><span style="font-size:small">.</span><span style="font-size:small">js</span><span style="font-size:small">"&gt;&lt;/</span><span style="font-size:small">script</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">
+</span><span style="font-size:small">      &lt;!-- </span><span style="font-size:small">initialisation</span><span style="font-size:small"> </span><span style="font-size:small">info</span><span style="font-size:small"> </span><span style="font-size:small">utilisateur</span><span style="font-size:small"> --&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">  &lt;</span><span style="font-size:small">script</span><span style="font-size:small"> </span><span style="font-size:small">type</span><span style="font-size:small">="</span><span style="font-size:small">text</span><span style="font-size:small">/</span><span style="font-size:small">javascript</span><span style="font-size:small">"&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">    </span><span style="font-size:small">var</span><span style="font-size:small"> </span><span style="font-size:small">X</span><span style="font-size:small">=</span><span style="font-size:small">InfoENT4esciti</span><span style="font-size:small">;</span><span style="font-size:small">
+</span><span style="font-size:small">    </span><span style="font-size:small">X</span><span style="font-size:small">.</span><span style="font-size:small">setUid</span><span style="font-size:small">('&lt;</span><span style="font-size:small">xsl</span><span style="font-size:small">:</span><span style="font-size:small">value</span><span style="font-size:small">-</span><span style="font-size:small">of</span><span style="font-size:small"> </span><span style="font-size:small">select</span><span style="font-size:small">="</span><span style="font-size:small">$USER_ID</span><span style="font-size:small">" /&gt;');</span><span style="font-size:small">
+</span><span style="font-size:small">    </span><span style="font-size:small">X</span><span style="font-size:small">.</span><span style="font-size:small">setSiren</span><span style="font-size:small">('&lt;</span><span style="font-size:small">xsl</span><span style="font-size:small">:</span><span style="font-size:small">value</span><span style="font-size:small">-</span><span style="font-size:small">of</span><span style="font-size:small"> </span><span style="font-size:small">select</span><span style="font-size:small">="</span><span style="font-size:small">$SIREN</span><span style="font-size:small">" /&gt;');</span><span style="font-size:small">
+</span><span style="font-size:small">    </span><span style="font-size:small">X</span><span style="font-size:small">.</span><span style="font-size:small">setUai</span><span style="font-size:small">('&lt;</span><span style="font-size:small">xsl</span><span style="font-size:small">:</span><span style="font-size:small">value</span><span style="font-size:small">-</span><span style="font-size:small">of</span><span style="font-size:small"> </span><span style="font-size:small">select</span><span style="font-size:small">="</span><span style="font-size:small">$UAICourant</span><span style="font-size:small">" /&gt;');</span><span style="font-size:small">
+</span><span style="font-size:small">    </span><span style="font-size:small">X</span><span style="font-size:small">.</span><span style="font-size:small">setObjectClass</span><span style="font-size:small">('&lt;</span><span style="font-size:small">xsl</span><span style="font-size:small">:</span><span style="font-size:small">value</span><span style="font-size:small">-</span><span style="font-size:small">of</span><span style="font-size:small"> </span><span style="font-size:small">select</span><span style="font-size:small">="</span><span style="font-size:small">$OBJECTCLASS</span><span style="font-size:small">" /&gt;');</span><span style="font-size:small">
+</span><span style="font-size:small">  &lt;/</span><span style="font-size:small">script</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">  &lt;!--  </span><span style="font-size:small">Fin</span><span style="font-size:small"> </span><span style="font-size:small">init</span><span style="font-size:small"> </span><span style="font-size:small">XITI</span><span style="font-size:small"> --&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">...</span><span style="font-size:small">
+</span><span style="font-size:small">...</span><span style="font-size:small">
+</span><span style="font-size:small">    &lt;!-- </span><span style="font-size:small">Ajout</span><span style="font-size:small"> </span><span style="font-size:small">script</span><span style="font-size:small"> </span><span style="font-size:small">pour</span><span style="font-size:small"> </span><span style="font-size:small">XITI</span><span style="font-size:small"> --&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">  &lt;</span><span style="font-size:small">script</span><span style="font-size:small"> </span><span style="font-size:small">type</span><span style="font-size:small">="</span><span style="font-size:small">text</span><span style="font-size:small">/</span><span style="font-size:small">javascript</span><span style="font-size:small">"&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">
+</span><span style="font-size:small">      // </span><span style="font-size:small">marquage</span><span style="font-size:small"> </span><span style="font-size:small">des</span><span style="font-size:small"> </span><span style="font-size:small">portlets</span><span style="font-size:small">
+</span><span style="font-size:small">    </span><span style="font-size:small">if</span><span style="font-size:small"> (! </span><span style="font-size:small">InfoENT4esciti</span><span style="font-size:small">.</span><span style="font-size:small">callByContextInCssClass</span><span style="font-size:small">(</span><span style="font-size:small">up</span><span style="font-size:small">.</span><span style="font-size:small">jQuery</span><span style="font-size:small">, '%</span><span style="font-size:small">portletPortail</span><span style="font-size:small">')) {</span><span style="font-size:small">
+</span><span style="font-size:small">        // </span><span style="font-size:small">si</span><span style="font-size:small"> </span><span style="font-size:small">aucune</span><span style="font-size:small"> </span><span style="font-size:small">portlet</span><span style="font-size:small"> </span><span style="font-size:small">ne</span><span style="font-size:small"> </span><span style="font-size:small">marque</span><span style="font-size:small"> </span><span style="font-size:small">alors</span><span style="font-size:small"> </span><span style="font-size:small">marquage</span><span style="font-size:small"> </span><span style="font-size:small">page</span><span style="font-size:small"> </span><span style="font-size:small">par</span><span style="font-size:small"> </span><span style="font-size:small">defaut</span><span style="font-size:small">.</span><span style="font-size:small">
+</span><span style="font-size:small">      </span><span style="font-size:small">InfoENT4esciti</span><span style="font-size:small">.</span><span style="font-size:small">callByService</span><span style="font-size:small">("</span><span style="font-size:small">Page_ENT</span><span style="font-size:small">");</span><span style="font-size:small">
+</span><span style="font-size:small">    }</span><span style="font-size:small">
+</span><span style="font-size:small">      // </span><span style="font-size:small">pose</span><span style="font-size:small"> </span><span style="font-size:small">de</span><span style="font-size:small"> </span><span style="font-size:small">tous</span><span style="font-size:small"> </span><span style="font-size:small">les</span><span style="font-size:small"> </span><span style="font-size:small">evenements</span><span style="font-size:small"> </span><span style="font-size:small">onclick</span><span style="font-size:small">
+</span><span style="font-size:small">    </span><span style="font-size:small">InfoENT4esciti</span><span style="font-size:small">.</span><span style="font-size:small">marqueOnClick</span><span style="font-size:small">(</span><span style="font-size:small">up</span><span style="font-size:small">.</span><span style="font-size:small">jQuery</span><span style="font-size:small">, '%</span><span style="font-size:small">ancrePortail</span><span style="font-size:small">');</span><span style="font-size:small">
+</span><span style="font-size:small">  &lt;/</span><span style="font-size:small">script</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">  &lt;!-- </span><span style="font-size:small">Fin</span><span style="font-size:small"> </span><span style="font-size:small">XITI</span><span style="font-size:small"> --&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">&lt;/</span><span style="font-size:small">body</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">...</span></div><p>			<span style="font-weight:bold">Attention:</span> 
+			</p><ul class="itemize"><li class="li-itemize">
+				<a href="../src/esciti.js">esciti.js</a> doit être accessible dans le même domaine que le portail.
+				Les fichiers <a href="../src/escitiData.js">escitiData.js</a> et <span style="font-family:monospace">xtfirst_ENT.js</span>, fourni par <span style="font-size:small">XiTi</span>, 
+				doivent être dans le même répertoire que <a href="../src/esciti.js">esciti.js</a>. 
+				Dans notre exemple, ils sont accéssibles avec l’url <span style="font-family:monospace">/esciti/js/</span> relative au domaine du portail.
+				</li><li class="li-itemize">L’initialisation des données utilisateur doit impérativement commencer par l’<span style="font-size:small"><span style="font-style:italic">UID</span></span>; de plus, le <span style="font-size:small"><span style="font-style:italic">SIREN</span></span> doit être instancié avant l’<span style="font-size:small"><span style="font-style:italic">UAI</span></span>.
+				</li><li class="li-itemize">Pour le dernier tag ‹script›. 
+					<ul class="itemize"><li class="li-itemize">
+					Le <span style="font-style:italic">callByService</span>("<span style="font-style:italic">Page</span>_<span style="font-style:italic">ENT</span>") fait le marquage par défaut de toutes les pages qui n’ont pas de portlet marquante.
+					</li><li class="li-itemize">Le <span style="font-style:italic">callByContextInCssClass</span>(<span style="font-style:italic">up</span>.<span style="font-style:italic">jQuery</span>, ′%<span style="font-style:italic">portletPortail</span>′) ajoute les marques des services rendus par les portlets.
+					 
+					 <span style="font-style:italic">up</span>.<span style="font-style:italic">jQuery</span> est la référence du jQuery utilisé par le portail.
+					 
+					 %<span style="font-style:italic">portletPortail</span> est le paramètre défini dans <span style="font-style:italic">InfoENT</span>4<span style="font-style:italic">esciti</span>.<span style="font-style:italic">parametre</span> qui doit donner les ‹div› contenant les portlets.
+					 Le service de chaque portlet sera déduit des classes css de ces ‹div› et de la table <span style="font-style:italic">context</span>2<span style="font-style:italic">Service</span> (voir <a href="../src/escitiData.js">escitiData.js</a>).
+					 
+					</li><li class="li-itemize">Le <span style="font-style:italic">marqueOnClick</span>(<span style="font-style:italic">up</span>.<span style="font-style:italic">jQuery</span>, ′%<span style="font-style:italic">ancrePortail</span>′) place les evénements ‘onclick’ 
+					sur les liens de classes <span style="font-style:italic">css</span> définies par le paramètre <span style="font-size:small"><span style="font-style:italic">%ancrePortail</span></span>. 
+					Les services associés à ces marquages ‘onclick’ sont paramètrés dans <span style="font-style:italic">href</span>2<span style="font-style:italic">Service</span>.
+					Cette méthode place aussi tous les marquages ‘onclick’ définis dans <span style="font-style:italic">InfoENT</span>4<span style="font-style:italic">esciti</span>.
+					</li></ul><p>				</p></li></ul><p>
+				
+		
+		</p>
+<!--TOC section id="sec14" Le marquage de la version mobile du portail <span style="font-style:italic">NetoCentre</span>.-->
+<h2 id="sec14" class="section">5  Le marquage de la version mobile du portail <span style="font-style:italic">NetoCentre</span>.</h2><!--SEC END --><p>
+				Ce qui change, dans la version mobile, c’est le thème, et certaines classes <span style="font-style:italic">css</span>.
+				Le thème utilisé est ‘muniversality’ et toutes les adaptations se font dans <br>
+				<span style="font-family:monospace">src/main/ressources/layout/theme/muniversality/muniversality.xsl</span>.
+				
+		</p>
+<!--TOC subsection id="sec15" Modification de <span style="font-family:monospace">muniversality.xsl</span>.-->
+<h3 id="sec15" class="subsection">5.1  Modification de <span style="font-family:monospace">muniversality.xsl</span>.</h3><!--SEC END --><p>
+				Comme pour la version non-mobile, il faut déclarer les paramètres supplémentaires : 
+				<span style="font-size:small"><span style="font-style:italic">OBJECTCLASS</span></span>, <span style="font-size:small"><span style="font-style:italic">SIREN</span></span> et <span style="font-size:small"><span style="font-style:italic">UAICourant</span></span>.
+				La pause des marqueurs se fait aussi dans ce fichier au début et à la fin de la création du tag ‹body›.
+				Ce qui donne pour les paramètres dans la section <span style="font-size:small">“VARIABLES and PARAMETERS”</span>:
+				</p><div class="lstlisting"><span style="font-size:small">...</span><span style="font-size:small">
+</span><span style="font-size:small">&lt;!-- ****** </span><span style="font-size:small">XSL</span><span style="font-size:small"> </span><span style="font-size:small">UTILITY</span><span style="font-size:small"> </span><span style="font-size:small">PARAMETERS</span><span style="font-size:small"> ****** --&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">...</span><span style="font-size:small">
+</span><span style="font-size:small">&lt;!--</span><span style="font-size:small">
+</span><span style="font-size:small">   | </span><span style="font-size:small">GREEN</span><span style="font-size:small">
+</span><span style="font-size:small">   | </span><span style="font-size:small">Add</span><span style="font-size:small">-</span><span style="font-size:small">on</span><span style="font-size:small"> </span><span style="font-size:small">for</span><span style="font-size:small"> </span><span style="font-size:small">XiTi</span><span style="font-size:small">
+</span><span style="font-size:small"> --&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">&lt;</span><span style="font-size:small">xsl</span><span style="font-size:small">:</span><span style="font-size:small">param</span><span style="font-size:small"> </span><span style="font-size:small">name</span><span style="font-size:small">="</span><span style="font-size:small">OBJECTCLASS</span><span style="font-size:small">"&gt;&lt;/</span><span style="font-size:small">xsl</span><span style="font-size:small">:</span><span style="font-size:small">param</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">&lt;</span><span style="font-size:small">xsl</span><span style="font-size:small">:</span><span style="font-size:small">param</span><span style="font-size:small"> </span><span style="font-size:small">name</span><span style="font-size:small">="</span><span style="font-size:small">SIREN</span><span style="font-size:small">"&gt;&lt;/</span><span style="font-size:small">xsl</span><span style="font-size:small">:</span><span style="font-size:small">param</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">&lt;</span><span style="font-size:small">xsl</span><span style="font-size:small">:</span><span style="font-size:small">param</span><span style="font-size:small"> </span><span style="font-size:small">name</span><span style="font-size:small">="</span><span style="font-size:small">UAICourant</span><span style="font-size:small">"&gt;&lt;/</span><span style="font-size:small">xsl</span><span style="font-size:small">:</span><span style="font-size:small">param</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">...</span></div><p>				
+				Les tags ‹script› d’initialisation des données utilisateur au début du ‹body›:
+				</p><div class="lstlisting"><span style="font-size:small">...</span><span style="font-size:small">
+</span><span style="font-size:small">&lt;</span><span style="font-size:small">body</span><span style="font-size:small"> </span><span style="font-size:small">class</span><span style="font-size:small">="</span><span style="font-size:small">up</span><span style="font-size:small"> {</span><span style="font-size:small">$FLUID_THEME_CLASS</span><span style="font-size:small">} </span><span style="font-size:small">dashboard</span><span style="font-size:small">-{</span><span style="font-size:small">$VIEW</span><span style="font-size:small">}"&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">    &lt;!--  </span><span style="font-size:small">Ajout</span><span style="font-size:small"> </span><span style="font-size:small">de</span><span style="font-size:small"> </span><span style="font-size:small">script</span><span style="font-size:small"> </span><span style="font-size:small">pour</span><span style="font-size:small"> </span><span style="font-size:small">XITI</span><span style="font-size:small"> --&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">  &lt;</span><span style="font-size:small">script</span><span style="font-size:small"> </span><span style="font-size:small">type</span><span style="font-size:small">="</span><span style="font-size:small">text</span><span style="font-size:small">/</span><span style="font-size:small">javascript</span><span style="font-size:small">" </span><span style="font-size:small">src</span><span style="font-size:small">="/</span><span style="font-size:small">esciti</span><span style="font-size:small">/</span><span style="font-size:small">js</span><span style="font-size:small">/</span><span style="font-size:small">esciti</span><span style="font-size:small">.</span><span style="font-size:small">js</span><span style="font-size:small">"&gt;&lt;/</span><span style="font-size:small">script</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">  &lt;</span><span style="font-size:small">script</span><span style="font-size:small"> </span><span style="font-size:small">type</span><span style="font-size:small">="</span><span style="font-size:small">text</span><span style="font-size:small">/</span><span style="font-size:small">javascript</span><span style="font-size:small">"&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">    </span><span style="font-size:small">var</span><span style="font-size:small"> </span><span style="font-size:small">X</span><span style="font-size:small">=</span><span style="font-size:small">InfoENT4esciti</span><span style="font-size:small">;</span><span style="font-size:small">
+</span><span style="font-size:small">    </span><span style="font-size:small">X</span><span style="font-size:small">.</span><span style="font-size:small">setUid</span><span style="font-size:small">('&lt;</span><span style="font-size:small">xsl</span><span style="font-size:small">:</span><span style="font-size:small">value</span><span style="font-size:small">-</span><span style="font-size:small">of</span><span style="font-size:small"> </span><span style="font-size:small">select</span><span style="font-size:small">="</span><span style="font-size:small">$USER_ID</span><span style="font-size:small">" /&gt;');</span><span style="font-size:small">
+</span><span style="font-size:small">    </span><span style="font-size:small">X</span><span style="font-size:small">.</span><span style="font-size:small">setSiren</span><span style="font-size:small">('&lt;</span><span style="font-size:small">xsl</span><span style="font-size:small">:</span><span style="font-size:small">value</span><span style="font-size:small">-</span><span style="font-size:small">of</span><span style="font-size:small"> </span><span style="font-size:small">select</span><span style="font-size:small">="</span><span style="font-size:small">$SIREN</span><span style="font-size:small">" /&gt;');</span><span style="font-size:small">
+</span><span style="font-size:small">    </span><span style="font-size:small">X</span><span style="font-size:small">.</span><span style="font-size:small">setUai</span><span style="font-size:small">('&lt;</span><span style="font-size:small">xsl</span><span style="font-size:small">:</span><span style="font-size:small">value</span><span style="font-size:small">-</span><span style="font-size:small">of</span><span style="font-size:small"> </span><span style="font-size:small">select</span><span style="font-size:small">="</span><span style="font-size:small">$UAICourant</span><span style="font-size:small">" /&gt;');</span><span style="font-size:small">
+</span><span style="font-size:small">    </span><span style="font-size:small">X</span><span style="font-size:small">.</span><span style="font-size:small">setObjectClass</span><span style="font-size:small">('&lt;</span><span style="font-size:small">xsl</span><span style="font-size:small">:</span><span style="font-size:small">value</span><span style="font-size:small">-</span><span style="font-size:small">of</span><span style="font-size:small"> </span><span style="font-size:small">select</span><span style="font-size:small">="</span><span style="font-size:small">$OBJECTCLASS</span><span style="font-size:small">" /&gt;');</span><span style="font-size:small">
+</span><span style="font-size:small">  &lt;/</span><span style="font-size:small">script</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">    &lt;!--  </span><span style="font-size:small">Fin</span><span style="font-size:small"> </span><span style="font-size:small">init</span><span style="font-size:small"> </span><span style="font-size:small">XITI</span><span style="font-size:small"> --&gt;</span></div><p>				
+				Les tags pour poser les marqueurs à la fin du ‹body›:
+				</p><div class="lstlisting"><span style="font-size:small">...</span><span style="font-size:small">
+</span><span style="font-size:small">    &lt;!-- </span><span style="font-size:small">Ajout</span><span style="font-size:small"> </span><span style="font-size:small">script</span><span style="font-size:small"> </span><span style="font-size:small">pour</span><span style="font-size:small"> </span><span style="font-size:small">XITI</span><span style="font-size:small"> --&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">  &lt;</span><span style="font-size:small">script</span><span style="font-size:small"> </span><span style="font-size:small">type</span><span style="font-size:small">="</span><span style="font-size:small">text</span><span style="font-size:small">/</span><span style="font-size:small">javascript</span><span style="font-size:small">"&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">    </span><span style="font-size:small">if</span><span style="font-size:small"> (! </span><span style="font-size:small">InfoENT4esciti</span><span style="font-size:small">.</span><span style="font-size:small">callByContextInCssClass</span><span style="font-size:small">(</span><span style="font-size:small">up</span><span style="font-size:small">.</span><span style="font-size:small">jQuery</span><span style="font-size:small">, '%</span><span style="font-size:small">portletPortailMobile</span><span style="font-size:small">')) {</span><span style="font-size:small">
+</span><span style="font-size:small">      </span><span style="font-size:small">InfoENT4esciti</span><span style="font-size:small">.</span><span style="font-size:small">callByService</span><span style="font-size:small">("</span><span style="font-size:small">Page_ENT</span><span style="font-size:small">");</span><span style="font-size:small">
+</span><span style="font-size:small">    }</span><span style="font-size:small">
+</span><span style="font-size:small">    </span><span style="font-size:small">InfoENT4esciti</span><span style="font-size:small">.</span><span style="font-size:small">marqueOnClick</span><span style="font-size:small">(</span><span style="font-size:small">up</span><span style="font-size:small">.</span><span style="font-size:small">jQuery</span><span style="font-size:small">, '%</span><span style="font-size:small">ancrePortailMobile</span><span style="font-size:small">');</span><span style="font-size:small">
+</span><span style="font-size:small">  &lt;/</span><span style="font-size:small">script</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">    &lt;!-- </span><span style="font-size:small">Fin</span><span style="font-size:small"> </span><span style="font-size:small">XITI</span><span style="font-size:small"> --&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">&lt;/</span><span style="font-size:small">body</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">...</span></div>
+<!--TOC section id="sec16" Le marquage du la nouvelle version du portail RWD (up;4.3)-->
+<h2 id="sec16" class="section">6  Le marquage du la nouvelle version du portail RWD (up;4.3)</h2><!--SEC END --><p>
+	...
+</p>
+<!--TOC section id="sec17" Le marquage de moodle.-->
+<h2 id="sec17" class="section">7  Le marquage de moodle.</h2><!--SEC END --><p>
+		Dans l’<span style="font-size:small">ENT</span> <span style="font-style:italic">NetoCentre</span> on force, dès la connexion, les utilisateurs à passer par le portail.
+		Donc, quand ils accèdent à moodle, ils ont forcément lu une page du portail. 
+		Cette page a créé le cookie contenant les informations utilisateur pour le marquage (<span style="font-size:small"><span style="font-style:italic">ID_PERSO</span></span>, <span style="font-size:small"><span style="font-style:italic">ID_PROFILE</span></span>, <span style="font-size:small"><span style="font-style:italic">ID_ETAB</span></span>...).
+		On n’a donc plus qu’à pauser les marqueurs.
+		
+		Dans moodle, les services sont facilement déductibles de l’identifiant du tag ‹body› de chaque page.
+		On utilisera donc la fonction <span style="font-style:italic">callById</span>() pour marquer.
+		
+		Les pages à marquer dépendent du thème. Dans l’<span style="font-size:small">ENT</span> <span style="font-style:italic">NetoCentre</span>, ce sont les pages <span style="font-family:monospace">theme/netocentrerwd/layout/columns?.php</span>
+		(où  ? prend les valeurs de 1 à 3) pour le thème <span style="font-family:monospace">netocnetrerwd</span> et, les pages <span style="font-family:monospace">theme/tourainerwd/layout/columns?.php</span> pour le thème <span style="font-family:monospace">tourainerwd</span>.
+		
+		</p>
+<!--TOC subsection id="sec18" Modification des fichiers de type <span style="font-family:monospace">columns?.php</span>-->
+<h3 id="sec18" class="subsection">7.1  Modification des fichiers de type <span style="font-family:monospace">columns?.php</span></h3><!--SEC END --><p>
+			Par défaut les pages seront marquées ′<span style="font-style:italic">Parcours</span>_<span style="font-style:italic">Pedagogiques</span>′.
+			Pour celles qui doivent être marquées différemment, il faut bien renseigné la table <span style="font-style:italic">txt</span>2<span style="font-style:italic">Service</span> 
+			avec l’identifiant de leurs tags ‹body›, associé au service souhaité.
+			
+			Le marquage se fait en plaçant le code suivant avant la fermeture du ‹body›:
+			</p><div class="lstlisting"><span style="font-size:small">  ...</span><span style="font-size:small">
+</span><span style="font-size:small">  &lt;</span><span style="font-size:small">body</span><span style="font-size:small"> ...&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">  ...</span><span style="font-size:small">
+</span><span style="font-size:small">
+</span><span style="font-size:small">    &lt;</span><span style="font-size:small">script</span><span style="font-size:small">  </span><span style="font-size:small">type</span><span style="font-size:small">="</span><span style="font-size:small">text</span><span style="font-size:small">/</span><span style="font-size:small">javascript</span><span style="font-size:small">" </span><span style="font-size:small">src</span><span style="font-size:small">="/</span><span style="font-size:small">esciti</span><span style="font-size:small">/</span><span style="font-size:small">js</span><span style="font-size:small">/</span><span style="font-size:small">esciti</span><span style="font-size:small">.</span><span style="font-size:small">js</span><span style="font-size:small">"&gt;&lt;/</span><span style="font-size:small">script</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">    &lt;</span><span style="font-size:small">script</span><span style="font-size:small">  </span><span style="font-size:small">type</span><span style="font-size:small">="</span><span style="font-size:small">text</span><span style="font-size:small">/</span><span style="font-size:small">javascript</span><span style="font-size:small">"&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">      </span><span style="font-size:small">if</span><span style="font-size:small"> (</span><span style="font-size:small">typeof</span><span style="font-size:small">  </span><span style="font-size:small">InfoENT4esciti</span><span style="font-size:small"> != '</span><span style="font-size:small">undefined</span><span style="font-size:small">') {</span><span style="font-size:small">
+</span><span style="font-size:small">        </span><span style="font-size:small">InfoENT4esciti</span><span style="font-size:small">.</span><span style="font-size:small">callById</span><span style="font-size:small">('</span><span style="font-size:small">body</span><span style="font-size:small">', '</span><span style="font-size:small">Parcours_Pedagogiques</span><span style="font-size:small">');</span><span style="font-size:small">
+</span><span style="font-size:small">      }</span><span style="font-size:small">
+</span><span style="font-size:small">    &lt;/</span><span style="font-size:small">script</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">  &lt;/</span><span style="font-size:small">body</span><span style="font-size:small">&gt;</span><span style="font-size:small">
+</span><span style="font-size:small">  ...</span></div><p>			
+			Le script perl <a href="../src/script/marqueMoodlPage.pl">script/marqueMoodlPage.pl</a>, pose le code ci-dessus sur toutes les pages passées en paramètre.
+			Par exemple, pour le thème <span style="font-family:monospace">netocentrerwd</span>, il suffit d’exécuter:
+			 			</p><div class="lstlisting"><span style="font-size:small">    </span><span style="font-size:small">script</span><span style="font-size:small">/</span><span style="font-size:small">marqueMoodlPage</span><span style="font-size:small">.</span><span style="font-size:small">pl</span><span style="font-size:small"> </span><span style="font-size:small">theme</span><span style="font-size:small">/</span><span style="font-size:small">netocentrerwd</span><span style="font-size:small">/</span><span style="font-size:small">layout</span><span style="font-size:small">/</span><span style="font-size:small">columns</span><span style="font-size:small">?.</span><span style="font-size:small">php</span></div><p>			Ceci marquera toutes les pages du thème <span style="font-family:monospace">netocentrerwd</span>.</p>
+<!--TOC section id="sec19" Le marquage du cahier de texte.-->
+<h2 id="sec19" class="section">8  Le marquage du cahier de texte.</h2><!--SEC END --><p>	
+		Le cahier de texte est une application <span style="font-size:small"><span style="font-style:italic">JEE</span></span> utilisant le framework <span style="font-size:small"><span style="font-style:italic">JSF</span></span> (voir sur git).
+		Deux classes java ont été modifiées pour permettre la récupération des données utilisateur pour le marquage.
+		Les autres modifications sont dans les pages xhtml de présentation.
+		</p>
+<!--TOC subsection id="sec20" Les modifications du code java.-->
+<h3 id="sec20" class="subsection">8.1  Les modifications du code java.</h3><!--SEC END --><p>
+		<span style="font-family:monospace">Profile.java</span> est l’énumération des profils utilisateur du cahier de texte; on a simplement ajouté à chaque profil 
+		l’<span style="font-size:small"><span style="font-style:italic">ObjectClass</span></span> correspondant.
+		On a déclaré, dans la classe <span style="font-family:monospace">MenuControl</span>, une sous classe <span style="font-family:monospace">Esciti</span> pour transmettre aux pages de présentation les données utilisateur 
+		via la méthode <span style="font-family:monospace">getEsciti()</span>.
+		
+		</p>
+<!--TOC subsection id="sec21" Les Modifications des pages.xhtml.-->
+<h3 id="sec21" class="subsection">8.2  Les Modifications des pages.xhtml.</h3><!--SEC END --><p>
+		Chaque page ‹HTML› du cahier de texte est créé avec le tag ‹cr:page› défini par l’application.
+		Le tag ‹cr:page› a été modifié pour pouvoir passer en paramètre (<span style="font-size:small"><span style="font-style:italic">libXiti</span></span>) le <span style="font-size:small"><span style="font-style:italic">LIB_SERVICE</span></span> correspondant à la page.
+		Ce nouveau tag ‹cr:page› pose le marqueur <span style="font-size:small">XiTi</span>, juste avant le ‹/body› en utilisant la fonction JavaScript <span style="font-style:italic">callByservice</span> 
+		définie dans <a href="../src/escitiData.js">escitiData.js</a>. 
+		
+		Si <span style="font-size:small"><span style="font-style:italic">libXiti</span></span> n’est pas défini alors le <span style="font-size:small"><span style="font-style:italic">LIB_SERVICE</span></span> utilisé est ‘Cahier_Textes’.
+		Ainsi, il n’est nécessaire de modifier que les pages qui ne doivent pas être marquées ‘Cahier_Textes’.
+		Par exemple, la page <span style="font-family:monospace">planningMensuel.xhtml</span> doit être marquée ‘Gestion_Temps’ de la façon suivante:
+					 			</p><div class="lstlisting"><span style="font-size:small">                  &lt;</span><span style="font-size:small">cr</span><span style="font-size:small">:</span><span style="font-size:small">page</span><span style="font-size:small">  </span><span style="font-size:small">titrePage</span><span style="font-size:small">="</span><span style="font-size:small">Cahier</span><span style="font-size:small"> </span><span style="font-size:small">de</span><span style="font-size:small"> </span><span style="font-size:small">texte</span><span style="font-size:small"> </span><span style="font-size:small">mensuel</span><span style="font-size:small">"</span><span style="font-size:small">
+</span><span style="font-size:small">                            </span><span style="font-size:small">libXiti</span><span style="font-size:small">="</span><span style="font-size:small">Gestion_Temps</span><span style="font-size:small">"</span><span style="font-size:small">
+</span><span style="font-size:small">                  &gt;</span><span style="font-size:small">
+</span><span style="font-size:small">                  ...</span><span style="font-size:small">
+</span><span style="font-size:small">                  &lt;/</span><span style="font-size:small">cr</span><span style="font-size:small">:</span><span style="font-size:small">page</span><span style="font-size:small">&gt;</span></div>
+<!--TOC section id="sec22" Quelques outils.-->
+<h2 id="sec22" class="section">9  Quelques outils.</h2><!--SEC END --><p>
+		Dans le répertoire <span style="font-family:monospace">script</span>, on dispose de quelques outils pour faciliter le travail.
+		</p>
+<!--TOC subsection id="sec23" js_compress.sh-->
+<h3 id="sec23" class="subsection">9.1  js_compress.sh</h3><!--SEC END --><p>
+		Le script shell <a href="../src/scipt/js_compress.sh">scipt/js_compress.sh</a> permet la minimisation des fichiers JavaScript dont le nom commence par <span style="font-family:monospace">esciti</span>.
+		Il lit les fichiers <span style="font-family:monospace">src/esciti*.js</span>, en enlève les lignes contenant des <span style="font-style:italic">console</span>.<span style="font-style:italic">log</span> et minimise le JavaScript à l’aide de la librairie java yuicompressor.
+		Le résultat est placé dans le répertoire <span style="font-family:monospace">js</span>.
+		Il faut donc que java soit installé sur la machine et qu’une et une seule version de <span style="font-family:monospace">script/yuicompressor*.jar</span> existe.
+		Pour le débogage on peut copier directement le fichier <span style="font-family:monospace">escitiData.js</span> dans <span style="font-family:monospace">js</span> sans le minimiser.
+		Attention, les lignes contenant des <span style="font-style:italic">console</span>.<span style="font-style:italic">log</span> étant supprimées il faut quelles ne contiennent que du code utile au débogage. 
+		
+		</p>
+<!--TOC subsection id="sec24" code_etab2js.pl-->
+<h3 id="sec24" class="subsection">9.2  code_etab2js.pl</h3><!--SEC END --><p>
+		Le script perl <a href="../src/script/code_etab2js.pl">script/code_etab2js.pl</a> permet de construire les tables JavaScript <span style="font-style:italic">uai</span>2<span style="font-style:italic">siren</span> et 
+		<span style="font-style:italic">siren</span>2<span style="font-style:italic">etab</span> à partir des données fournit par Kleegroup (association des numéros d’établissement <span style="font-size:small">XiTi</span> et leurs <span style="font-size:small"><span style="font-style:italic">UAI</span></span> ) et des données de nos bases associant les <span style="font-size:small"><span style="font-style:italic">SIREN</span></span> et les <span style="font-size:small"><span style="font-style:italic">UAI</span></span>.
+		
+		Par exemple, si le fichier <span style="font-family:monospace">codeEtab.csv</span> contient les données fournit par Kleegroup sous ce format:
+		</p><div class="lstlisting"><span style="font-size:small">      ,</span><span style="font-size:small">CFA</span><span style="font-size:small">.</span><span style="font-size:small">BTP</span><span style="font-size:small"> 28.</span><span style="font-size:small">Chartres</span><span style="font-size:small">,0280904</span><span style="font-size:small">F</span><span style="font-size:small">,2,,</span></div><p>		si le fichier <span style="font-family:monospace">uai2siren.txt</span> contient nos association <span style="font-size:small"><span style="font-style:italic">UAI</span></span> <span style="font-size:small"><span style="font-style:italic">SIREN</span></span> sous ce format:
+		</p><div class="lstlisting"><span style="font-size:small">      0280904</span><span style="font-size:small">F</span><span style="font-size:small">        77534903800064</span></div><p>		alors après avoir exécuté la commande :
+		</p><div class="lstlisting"><span style="font-size:small">      </span><span style="font-size:small">script</span><span style="font-size:small">/</span><span style="font-size:small">code_etab2js</span><span style="font-size:small">.</span><span style="font-size:small">pl</span><span style="font-size:small"> </span><span style="font-size:small">codeEtab</span><span style="font-size:small">.</span><span style="font-size:small">csv</span><span style="font-size:small"> </span><span style="font-size:small">uai2siren</span><span style="font-size:small">.</span><span style="font-size:small">txt</span><span style="font-size:small"> &gt; </span><span style="font-size:small">table</span><span style="font-size:small">.</span><span style="font-size:small">js</span></div><p>		il suffit de copier le contenu de <span style="font-family:monospace">table.js</span> dans <span style="font-family:monospace">src/escitiData.js</span>.
+		
+		</p>
+<!--TOC subsection id="sec25" marqueMoodlPage.pl-->
+<h3 id="sec25" class="subsection">9.3  marqueMoodlPage.pl</h3><!--SEC END --><p>
+			Le script perl <a href="../src/script/marqueMoodlPage.pl">script/marqueMoodlPage.pl</a>, pose les tags définis pour le marquage moodle, avant la balise ‹/body›, sur toutes les pages passées en paramètre.
+			Par exemple, pour le thème <span style="font-family:monospace">netocentrerwd</span>, il suffit d’exécuter:
+			 			</p><div class="lstlisting"><span style="font-size:small">    </span><span style="font-size:small">script</span><span style="font-size:small">/</span><span style="font-size:small">marqueMoodlPage</span><span style="font-size:small">.</span><span style="font-size:small">pl</span><span style="font-size:small"> </span><span style="font-size:small">theme</span><span style="font-size:small">/</span><span style="font-size:small">netocentrerwd</span><span style="font-size:small">/</span><span style="font-size:small">layout</span><span style="font-size:small">/</span><span style="font-size:small">columns</span><span style="font-size:small">?.</span><span style="font-size:small">php</span></div><p>			Ceci marquera toutes les pages du thème <span style="font-family:monospace">netocentrerwd</span>.</p><!--CUT END -->
+<!--HTMLFOOT-->
+<!--ENDHTML-->
+<!--FOOTER-->
+<hr style="height:2"><blockquote class="quote"><em>Ce document a été traduit de L<sup>A</sup>T<sub>E</sub>X par </em><a href="http://hevea.inria.fr"><em>H</em><em><span style="font-size:small"><sup>E</sup></span></em><em>V</em><em><span style="font-size:small"><sup>E</sup></span></em><em>A</em></a></blockquote></body>
+</html>
